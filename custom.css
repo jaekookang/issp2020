@@ -1,0 +1,12 @@
+.page-width {
+    min-width: 1000px;
+}
+
+.show-border {
+    border: 1px solid black;
+    border-style: dotted;
+}
+
+.row-margin {
+    margin: 10px;
+}
