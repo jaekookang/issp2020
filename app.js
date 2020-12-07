@@ -1,7 +1,8 @@
 const express = require("express");
 var app = express();
 
-// --- routing
-app.get("/", (req, res) => {
-    res.render("index.html");
-})
+// --- ROUTING
+app.get("/", function(request, response){
+    // Show index.html page
+    response.render("index.html");
+});
