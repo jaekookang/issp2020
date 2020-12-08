@@ -10,3 +10,34 @@
 .row-margin {
     margin: 10px;
 }
+
+footer {
+    text-align: center;
+    font-size: 15px;
+    padding: 3px;
+    background-color: Cornsilk;
+    color: black;
+}
+
+hr {
+    width:100%;
+    text-align:left;
+    margin-left:0;
+}
+
+.text-inner-margin {
+    margin: 10px;
+}
+
+.mathp-center-align {
+    margin: auto;
+    text-align: center;
+    width: 100%;
+}
+
+pre code {
+    background-color: #eee;
+    border: 1px solid #999;
+    display: block;
+    padding: 20px;
+}

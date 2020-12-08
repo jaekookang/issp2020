@@ -10,55 +10,208 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
         <link rel="stylesheet" href="custom.css">
     </head>
     <body>
 
         <!-- Top panel: Title, Authors -->
         <div class="jumbotron text-center page-width">
-          <p style="text-align: left;">International Seminar on Speech Production ISSP 2020 (Poster: 163)</p>
+          <p style="text-align: left;"><a href="https://issp2020.yale.edu/" target="_blank" style="color:black">12<sup>th</sup>International Seminar on Speech Production ISSP 2020 (Poster: 163)</a></p>
           <h1>Estimating "Good" variability in Speech Production using Invertible Neural Networks</h1>
           <p style="font-size:larger">Jaekoo Kang<sup>1,2</sup>, Hosung Nam <sup>3,4</sup> and D. H. Whalen<sup>1,2,4</sup></p>
           <p><sup>1</sup>The Graduate Center, CUNY; <sup>2</sup>Haskins Laboratories; <sup>3</sup>Korea University; <sup>4</sup>Yale University</p>
         </div>
 
-        <!-- Mid panel: Contents -->
+        <!-- Middle panel: Contents -->
         <div class="container page-width show-border">
 
-          <div class="row row-margin show-border">
-            introduction, summary
+          <div class="row row-margin show-border"  style="display:block">
+            <p class="text-inner-margin">
+              This project page demonstrates the detailed descriptions of data and modeling techniques 
+              introduced in the poster submitted to the ISSP 2020 as a supplement.
+            </p>
+
+            <hr>
+
+            <h2>Introduction</h2>
+            <p class="text-inner-margin">
+              Variability is inherent in skilled human motor movements. Playing a piano or riding a bicycle 
+              requires skilled coordination of motor elements, such as arms and legs, to achieve a motor goal.
+              Although the movements are skillful, the positions of the motor elements are not exactly the same 
+              regardless of how many times they are repeated or executed (“repetition without repetition”; Bernstein, 1967). 
+              This variability in the form of repeated limb movements can be understood as an informative biological feature 
+              in the human motor system due to its underlying structure and regularity 
+              (Latash et al., 2002; Riley & Turvey, 2002; Sternad, 2018; Whalen & Chen, 2019), 
+              which previously had been disregarded as noise. One such structure of the skilled motor movements is 
+              that it is highly synergistic and flexibly organized when decomposed into “good” and “bad” parts of variability 
+              (i.e., the uncontrolled manifold approach or the UCM; Latash et al., 2002; Scholz & Schöner, 1999, 2014).
+              Whether variability in speech production can also be decomposed into the same principle, 
+              however, has been rarely examined to date. Specifically, this project aims to focus on the "good" part of variability
+              in speech production and explore the use of invertible neural networks as a quantitative approach to understand 
+              how "good" variability is structured and can be learned by these neural-net models.
+            </p>
+
           </div>
 
           <div class="row row-margin show-border " style="display: block">
             javascript app
             <div class="col">
-            <div class="row row-margin show-border ">
-              AR-AC-AR
-            </div>
-            <div class="row row-margin show-border ">
-              <p>AR-AC-VW</p>
-              <p>VW-AC-AR</p>
-            </div>
+              <div class="row row-margin show-border ">
+                AR-AC-AR
+              </div>
             </div>
           </div>
 
           <div class="row row-margin show-border">
-            Data
+            <h2>Data</h2>
+            <p class="text-inner-margin">
+              The Haskins IEEE rate comparison database (Sivaraman et al., 2015; henceforth, the EMA-IEEE database) were utilized 
+              for the UCM analysis and FlowINN modeling. This database includes simultaneous articulatory and 
+              acoustic recordings from eight native American English speakers (4 females, 4 males). 
+              The articulatory data were collected using electromagnetic articulography (EMA), where eight pellet sensors, 
+              sampled at 100 Hz, were attached to speakers’ articulators and later corrected for head movements. 
+              Synchronous acoustic data were recorded at a sampling rate of 44.1 kHz. 
+              Speakers read 720 phonetically balanced sentences at both a normal and a fast rate, 
+              providing various consonant contexts to examine at both rates across speakers. 
+              Nine English vowels (/i, ɪ, ɛ, æ, ʌ, ɔ, ɑ, ʊ, u/) will be selected for the modeling 
+              of the forward mapping functions, while four front vowels (/i, ɪ, ɛ, æ/) 
+              representing vertical articulatory movement were focused on in the analysis.
+              <br><br>
+              Data preprocessing steps includes data normalization and dimension reduction. 
+              The purpose of normalizing articulatory and acoustic data was to account for individual differences 
+              as well as differences in the ranges of values and units (millimeter versus frequency). 
+              For articulatory data, six pellet sensors (with two horizontal and vertical sagittal coordinates per sensor) 
+              were selected: TR (Tongue Root), TB (Tongue Body), TT (Tongue Tip), UL (Upper Lip), LL (Lower Lip) and JAW. 
+              Twelve-dimensional kinematic data (six sensors with x-y coordinates) were Z-scored by speaker and then 
+              reduced down to three principal components (PCs) using the principal component analysis that 
+              roughly reflects the vertical, horizontal and residual movement of articulators. 
+              For acoustics data, the first two formant frequencies (F1, F2) were used and also normalized by speaker 
+              using the Z-scoring method. For each vowel, both articulatory and acoustic data were extracted at nine equidistant 
+              and normalized time points in which the 5th time point was the mid-point. 
+              Outliers were identified and removed prior to data normalization in order to reduce noise in the data. 
+              This data normalization procedure followed the guidelines taken from Whalen et al. (2018).
+              <br><br>
+              The following plots demonstrate a single speaker (F01)'s vowel production data at normal rate. The first four-by-two plots  
+              visualize vowel-by-data of the corresponding articulation and acoustics. The bottom plots shows the effects of moving along the 
+              Principal Component dimensions from the same speaker as an example.
+              <br><br>
+              <div style="display:block">
+                <a href="https://raw.githubusercontent.com/jaekookang/issp2020/master/tmp/F01_N_ctr.png"></a>
+                <a href="https://raw.githubusercontent.com/jaekookang/issp2020/master/tmp/F01_pca_gradient.png"></a>
+              </div>
+            </p>
           </div>
 
           <div class="row row-margin show-border">
-            Method (flow, INN architecture)
+            <h2>Methods</h2>
+            <p class="text-inner-margin" style="display:block">
+              For the mapping between articulation and acoustics, we borrowed the INN model architectiure from Ardizzone et al. (2019), 
+              but further customized for our purpose. The input data (\(x\)) was 3-D articulatory vector from the dimension-reduced Principal Components
+              from the EMA sensor coordinates. The output data (\(y\)) was 2-D acoustic vector; that is, the first two formant frequencies (F1, F2).
+              The dimension of the latent space was set to 2-D and appended to \(y\). The total dimensions were set to 6, which led to padding 
+              both on the input (\(6 - 3 = 3)\) and outputs (\(6 - 4 = 2)\). Given that \(\mathbf{x} \in \mathbb{R}^{3}\), \( \mathbf{y} \in \mathbb{R}^{2} \) 
+              and \( \mathbf{z} \in \mathbb{R}^{2} \), the forward mapping model \(f\) and its inverse \( f^{-1}=g \) can be written as follows 
+              (Note that \(\theta\) is neural-net parameters):
+
+              <p class="mathp-center-align"> Forward process: \( [\mathbf{y}, \mathbf{z}] = f(\mathbf{x}; \theta) \) </p>
+              <br>
+              <p class="mathp-center-align"> Inverse process: \( \mathbf{x} = g(\mathbf{y}, \mathbf{z}; \theta), \, \mathbf{z} \sim \mathcal{N}(\mathbf{z}; 0, I_{2}) \) </p>
+              <br><br>
+              
+              <p class="text-inner-margin">
+                Both forward and inverse processes share the same neural network parameters \( \theta \) and implemented in a single invertible neural-net model.
+              Using these definitions, the current INN model for articulation and acosutics can be expressed in a following manner using the change-of-variable technique.
+              </p>
+
+              <p class="mathp-center-align"> \( p(\mathbf{x}) = p(\mathbf{x} = g(\mathbf{y}, \mathbf{z}; \theta)) \left| det \left( \frac{\partial g(\mathbf{y},\mathbf{z};\theta)}{\partial[\mathbf{y},\mathbf{z}]} \right) \right|^{-1} \) </p>
+              <br><br>
+
+              <p class="text-inner-margin">
+                We used the simplest affine coupling layer structured as described in Dinh et al. (2014); therefore, the computation of the Jacobian determinant
+                was simple because each layer was volume-preserving transformation setting the determinant to one. The structure of the affine coupling layers was
+                first to split \(x\) into two blocks (\( x_1, x_2 \)) and to apply blocks of transformaions from (\( x_1, x_2 \)) to (\( y_1, y_2 \)) as follows.
+              </p>
+
+              <p class="mathp-center-align"> 
+                \( \begin{eqnarray*} 
+                y_1 &=& x_1 \\
+                y_2 &=& x_2 + m(x_1).
+                \end{eqnarray*} \) 
+              </p>
+              <br><br>
+
+              <p class="text-inner-margin">
+                The \( m \) was implemented as multilayer perceptrons (MLP) with rectified linear unit (ReLU) activations. Because this forward mapping
+                has a unit Jacobian determinant for any \( m \), the inverse was trivially found.
+              </p>
+
+              <p class="mathp-center-align"> 
+                \( \begin{eqnarray*} 
+                x_1 &=& y_1 \\
+                x_2 &=& y_2 - m(y_1).
+                \end{eqnarray*} \) 
+              </p>
+              <br><br>
+              
+              <p class="text-inner-margin">
+                The actual TensorFlow2 implementation of the model architecture is summarized as below.
+              </p>
+
+              <div style="margin:auto">
+                <pre>
+                  <code>
+Model: "NICECouplingBlock"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+layer0 (AdditiveAffineLayer) (None, 6)                 981       
+_________________________________________________________________
+layer1 (AdditiveAffineLayer) (None, 6)                 981       
+_________________________________________________________________
+layer2 (AdditiveAffineLayer) (None, 6)                 981       
+_________________________________________________________________
+layer3 (AdditiveAffineLayer) (None, 6)                 981       
+_________________________________________________________________
+layer4 (AdditiveAffineLayer) (None, 6)                 981       
+_________________________________________________________________
+ScaleLayer (Scale)           (None, 6)                 6         
+=================================================================
+Total params: 4,911
+Trainable params: 4,881
+Non-trainable params: 30
+_________________________________________________________________
+Loaded
+                  </code>
+                </pre>
+              </div>
+
+            </p>
             
           </div>
 
           <div class="row row-margin show-border">
-            Results
+            <h2>Results</h2>
           </div>
 
           <div class="row row-margin show-border">
-            Summary
+            <h2>Summary & Conclusion</h2>
           </div>
 
+        </div>
+
+        <!-- Bottom panel: Contents -->
+        <div class="container page-width show-border">
+          <footer>
+            <p>Jaekoo Kang
+              <br>
+              linkedin; GitHub; ResearchGate; Twitter
+              <br>
+              <a href="mailto:jkang@gradcenter.cuny.edu">jkang@gradcenter.cuny.edu</a>
+            </p>
+          </footer>
         </div>
         
     </body>
