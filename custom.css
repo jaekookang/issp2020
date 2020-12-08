@@ -9,6 +9,7 @@
 
 .row-margin {
     margin: 10px;
+    display: block;
 }
 
 footer {
@@ -27,6 +28,7 @@ hr {
 
 .text-inner-margin {
     margin: 10px;
+    display: block;
 }
 
 .mathp-center-align {
@@ -40,4 +42,9 @@ pre code {
     border: 1px solid #999;
     display: block;
     padding: 20px;
+    margin: auto;
+}
+
+pre {
+    margin: auto;
 }

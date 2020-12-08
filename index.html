@@ -56,15 +56,6 @@
 
           </div>
 
-          <div class="row row-margin show-border " style="display: block">
-            javascript app
-            <div class="col">
-              <div class="row row-margin show-border ">
-                AR-AC-AR
-              </div>
-            </div>
-          </div>
-
           <div class="row row-margin show-border">
             <h2>Data</h2>
             <p class="text-inner-margin">
@@ -98,9 +89,9 @@
               visualize vowel-by-data of the corresponding articulation and acoustics. The bottom plots shows the effects of moving along the 
               Principal Component dimensions from the same speaker as an example.
               <br><br>
-              <div style="display:block">
-                <a href="https://raw.githubusercontent.com/jaekookang/issp2020/master/tmp/F01_N_ctr.png"></a>
-                <a href="https://raw.githubusercontent.com/jaekookang/issp2020/master/tmp/F01_pca_gradient.png"></a>
+              <div style="display:block;text-align:center">
+                <img src="https://raw.githubusercontent.com/jaekookang/issp2020/master/img/F01_N_ctr.png" style="width:50%">
+                <img src="https://raw.githubusercontent.com/jaekookang/issp2020/master/img/F01_pca_gradient.png" style="width:80%">
               </div>
             </p>
           </div>
@@ -157,10 +148,10 @@
               <br><br>
               
               <p class="text-inner-margin">
-                The actual TensorFlow2 implementation of the model architecture is summarized as below.
+                The actual TensorFlow2 implementation of the model architecture is summarized as below. 
               </p>
 
-              <div style="margin:auto">
+              <div style="text-align:center;display:flex">
                 <pre>
                   <code>
 Model: "NICECouplingBlock"
@@ -187,13 +178,22 @@ Loaded
                   </code>
                 </pre>
               </div>
-
             </p>
             
           </div>
 
           <div class="row row-margin show-border">
             <h2>Results</h2>
+            <p class="text-inner-margin">
+              TODO: Add test accuracy plot
+            </p>
+
+            <div class="col" style="display:block">
+              <div class="row row-margin show-border">
+                AR-AC-AR
+              </div>
+            </div>
+
           </div>
 
           <div class="row row-margin show-border">
