@@ -209,21 +209,21 @@ _________________________________________________________________
             <div class="col show-border" style="display:block">
               <div class="row row-margin show-border">
                 <b>Speaker:</b> 
-                <select name="speaker" id="sel-speaker">
+                <select name="speaker" id="sel-speaker" onchange="showImage()">
                   <option value="F01" select="selected">F01</option>
                 </select>
                 <br>
                 <b>Rate:</b>
-                <select name="rate" id="sel-rate">
+                <select name="rate" id="sel-rate" onchange="showImage()">
                   <option value="Normal" select="selected">Normal</option>
                 </select>
                 <br>
                 <b>Vowel:</b>
-                <select name="vowel" id="sel-vowel">
+                <select name="vowel" id="sel-vowel" onchange="showImage()">
                   <option value="IY1" select="selected">IY1</option>
                 </select>
               </div>
-              <div class="row row-margin show-border">
+              <div class="row row-margin show-border" style="text-align:center;">
                 <img id="vis-ar2ac" src="" style="width:80%">
               </div>
             </div>
@@ -247,6 +247,5 @@ _________________________________________________________________
             </p>
           </footer>
         </div>
-        
     </body>
 </html>

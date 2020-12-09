@@ -31,16 +31,24 @@ var vowelList = {
 
 function showImage() {
     var imgObj = document.getElementById("vis-ar2ac");
-    imgObj.src = "https://raw.githubusercontent.com/jaekookang/issp2020/master/img/AR2AC/" + speakerID + "_AR2AC_" + rateID + "_" + vowelID + ".png";
+    var speakerSel = document.getElementById("sel-speaker");
+    var rateSel = document.getElementById("sel-rate");
+    var vowelSel = document.getElementById("sel-vowel");
+    speakerID = speakerSel.value;
+    rateID = rateSel.value;
+    vowelID = vowelSel.value;
+    var imgFile = "https://raw.githubusercontent.com/jaekookang/issp2020/master/img/AR2AC/" + speakerID + "_AR2AC_" + rateList[rateID] + "_" + vowelID + ".png";
+    imgObj.src = imgFile;
+    console.log(imgFile);
 }
 
 window.onload = function() {
     var speakerSel = document.getElementById("sel-speaker");
     var rateSel = document.getElementById("sel-rate");
     var vowelSel = document.getElementById("sel-vowel");
-    var speakerID = speakerSel.value;
-    var rateID = rateSel.value;
-    var vowelID = vowelSel.value;
+    speakerID = speakerSel.value;
+    rateID = rateSel.value;
+    vowelID = vowelSel.value;
 
     for (var x in speakerList) {
         speakerSel.options[speakerSel.options.length] = new Option(x, x);
@@ -56,3 +64,4 @@ window.onload = function() {
     rateSel.onChange = showImage();
     vowelSel.onChange = showImage();
 }
+
