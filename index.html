@@ -12,6 +12,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="custom.js"></script>
   
         <link rel="stylesheet" href="custom.css">
     </head>
@@ -193,14 +194,37 @@ _________________________________________________________________
               in the data.
             </p>
             <br><br>
+            
             <div style="display:block;text-align:center">
               <img src="https://raw.githubusercontent.com/jaekookang/issp2020/master/img/RMSE.png" style="width:80%">
               <img src="https://raw.githubusercontent.com/jaekookang/issp2020/master/img/SSreg.png" style="width:80%">
             </div>
+            <br><br>
+            
+            <p class="text-inner-margin">
+              The result of forward and inverse mapping with latent-space sampling is visualized in the following plots.
+              You can select different <b>Speaker</b>, <b>Rate</b> and <b>Vowel</b> in the dropdown menu. The plots will change accordingly.
+            </p>
 
-            <div class="col" style="display:block">
+            <div class="col show-border" style="display:block">
               <div class="row row-margin show-border">
-                AR-AC-AR
+                <b>Speaker:</b> 
+                <select name="speaker" id="sel-speaker">
+                  <option value="F01" select="selected">F01</option>
+                </select>
+                <br>
+                <b>Rate:</b>
+                <select name="rate" id="sel-rate">
+                  <option value="Normal" select="selected">Normal</option>
+                </select>
+                <br>
+                <b>Vowel:</b>
+                <select name="vowel" id="sel-vowel">
+                  <option value="IY1" select="selected">IY1</option>
+                </select>
+              </div>
+              <div class="row row-margin show-border">
+                <img id="vis-ar2ac" src="" style="width:80%">
               </div>
             </div>
 
