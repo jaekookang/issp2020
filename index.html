@@ -151,7 +151,7 @@
                 The actual TensorFlow2 implementation of the model architecture is summarized as below. 
               </p>
 
-              <div style="text-align:center;display:flex">
+              <div style="text-align:center;display:flex;margin:auto">
                 <pre>
                   <code>
 Model: "NICECouplingBlock"
@@ -174,7 +174,7 @@ Total params: 4,911
 Trainable params: 4,881
 Non-trainable params: 30
 _________________________________________________________________
-Loaded
+
                   </code>
                 </pre>
               </div>
@@ -185,8 +185,18 @@ Loaded
           <div class="row row-margin show-border">
             <h2>Results</h2>
             <p class="text-inner-margin">
-              TODO: Add test accuracy plot
+              The modeling result is summarized in the following two plots. The top plots demonstrates the root mean-squared error (RMSE)
+              by speaker and rate. Overall, the pattern is similar, but normal-rate models are slightly better than 
+              the fast-rate models, possibly because of the smaller variability in the normal-rate data. 
+              The bottom plots illustrates how much variability is explained by the model as the index of the sum-of-squared regression (SSreg).
+              Despite the individual differences, the normal-rate models are generally better at explaining the variability 
+              in the data.
             </p>
+            <br><br>
+            <div style="display:block;text-align:center">
+              <img src="https://raw.githubusercontent.com/jaekookang/issp2020/master/img/RMSE.png" style="width:80%">
+              <img src="https://raw.githubusercontent.com/jaekookang/issp2020/master/img/SSreg.png" style="width:80%">
+            </div>
 
             <div class="col" style="display:block">
               <div class="row row-margin show-border">
