@@ -48,7 +48,10 @@ window.onload = function() {
     var vowelSel = document.getElementById("sel-vowel");
     speakerID = speakerSel.value;
     rateID = rateSel.value;
-    vowelID = vowelSel.value;
+    vowelID = vowelSel.value
+    speakerSel.value = speakerID;
+    rateSel.value = rateID;
+    vowelSel.value = vowelID;
 
     for (var x in speakerList) {
         speakerSel.options[speakerSel.options.length] = new Option(x, x);
@@ -59,6 +62,9 @@ window.onload = function() {
     for (var x in vowelList) {
         vowelSel.options[vowelSel.options.length] = new Option(x, x);
     }
+    speakerSel.remove(0);
+    rateSel.remove(0);
+    vowelSel.remove(0);
 
     speakerSel.onChange = showImage();
     rateSel.onChange = showImage();
