@@ -31,6 +31,10 @@ hr {
     display: block;
 }
 
+.text-ref {
+    font-size: 10px;
+}
+
 .mathp-center-align {
     margin: auto;
     text-align: center;

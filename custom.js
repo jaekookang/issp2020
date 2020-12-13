@@ -1,6 +1,6 @@
-var speakerID = "F01";
-var rateID = "N";
-var vowelID = "IY1";
+var speakerIDar2ac = "F01";
+var rateIDar2ac = "N";
+var vowelIDar2ac = "IY1";
 
 var speakerList = {
     "F01":"F01",
@@ -29,28 +29,40 @@ var vowelList = {
     "UW1":"UW1",
 }
 
-function showImage() {
-    var imgObj = document.getElementById("vis-ar2ac");
-    var speakerSel = document.getElementById("sel-speaker");
-    var rateSel = document.getElementById("sel-rate");
-    var vowelSel = document.getElementById("sel-vowel");
-    speakerID = speakerSel.value;
-    rateID = rateSel.value;
-    vowelID = vowelSel.value;
-    var imgFile = "https://raw.githubusercontent.com/jaekookang/issp2020/master/img/AR2AC/" + speakerID + "_" + rateList[rateID] + "_ar2ac_" + "_" + vowelID + ".png";
-    imgObj.src = imgFile;
+function showImageAR2AC() {
+    var imgObjAR2AC = document.getElementById("vis-ar2ac");
+    var speakerSelAR2AC = document.getElementById("sel-speaker-ar2ac");
+    var rateSelAR2AC = document.getElementById("sel-rate-ar2ac");
+    var vowelSelAR2AC = document.getElementById("sel-vowel-ar2ac");
+    speakerIDar2ac = speakerSelAR2AC.value;
+    rateIDar2ac = rateSelAR2AC.value;
+    vowelIDar2ac = vowelSelAR2AC.value;
+    var imgFile = "https://raw.githubusercontent.com/jaekookang/issp2020/master/img/AR2AC/" + speakerIDar2ac + "_" + rateList[rateIDar2ac] + "_ar2ac_" + vowelIDar2ac + ".png";
+    imgObjAR2AC.src = imgFile;
 }
 
-window.onload = function() {
-    var speakerSel = document.getElementById("sel-speaker");
-    var rateSel = document.getElementById("sel-rate");
-    var vowelSel = document.getElementById("sel-vowel");
-    speakerID = speakerSel.value;
-    rateID = rateSel.value;
-    vowelID = vowelSel.value
-    speakerSel.value = speakerID;
-    rateSel.value = rateID;
-    vowelSel.value = vowelID;
+function showImageAC2VW() {
+    var imgObjAC2VW = document.getElementById("vis-ac2vw");
+    var speakerSelAC2VW = document.getElementById("sel-speaker-ac2vw");
+    var rateSelAC2VW = document.getElementById("sel-rate-ac2vw");
+    var vowelSelAC2VW = document.getElementById("sel-vowel-ac2vw");
+    speakerIDac2vw = speakerSelAC2VW.value;
+    rateIDac2vw = rateSelAC2VW.value;
+    vowelIDac2vw = vowelSelAC2VW.value;
+    var imgFile = "https://raw.githubusercontent.com/jaekookang/issp2020/master/img/AC2VW/" + speakerIDac2vw + "_" + rateList[rateIDac2vw] + "_ac2vw_" + vowelIDac2vw + ".png";
+    imgObjAC2VW.src = imgFile;
+}
+
+function prep_ar2ac() {
+    var speakerSel = document.getElementById("sel-speaker-ar2ac");
+    var rateSel = document.getElementById("sel-rate-ar2ac");
+    var vowelSel = document.getElementById("sel-vowel-ar2ac");
+    speakerIDar2ac = speakerSel.value;
+    rateIDar2ac = rateSel.value;
+    vowelIDar2ac = vowelSel.value
+    speakerSel.value = speakerIDar2ac;
+    rateSel.value = rateIDar2ac;
+    vowelSel.value = vowelIDar2ac;
 
     for (var x in speakerList) {
         speakerSel.options[speakerSel.options.length] = new Option(x, x);
@@ -65,8 +77,44 @@ window.onload = function() {
     rateSel.remove(0);
     vowelSel.remove(0);
 
-    speakerSel.onChange = showImage();
-    rateSel.onChange = showImage();
-    vowelSel.onChange = showImage();
+    speakerSel.onChange = showImageAR2AC();
+    rateSel.onChange = showImageAR2AC();
+    vowelSel.onChange = showImageAR2AC();
+}
+
+function prep_ac2vw() {
+    var speakerSel = document.getElementById("sel-speaker-ac2vw");
+    var rateSel = document.getElementById("sel-rate-ac2vw");
+    var vowelSel = document.getElementById("sel-vowel-ac2vw");
+    speakerIDac2vw = speakerSel.value;
+    rateIDac2vw = rateSel.value;
+    vowelIDac2vw = vowelSel.value
+    speakerSel.value = speakerIDac2vw;
+    rateSel.value = rateIDac2vw;
+    vowelSel.value = vowelIDac2vw;
+
+    for (var x in speakerList) {
+        speakerSel.options[speakerSel.options.length] = new Option(x, x);
+    }
+    for (var x in rateList) {
+        rateSel.options[rateSel.options.length] = new Option(x, x);
+    }
+    for (var x in vowelList) {
+        vowelSel.options[vowelSel.options.length] = new Option(x, x);
+    }
+    speakerSel.remove(0);
+    rateSel.remove(0);
+    vowelSel.remove(0);
+
+    speakerSel.onChange = showImageAC2VW();
+    rateSel.onChange = showImageAC2VW();
+    vowelSel.onChange = showImageAC2VW();
+}
+
+
+// ----- Initiate
+window.onload = function() {
+    prep_ar2ac();
+    prep_ac2vw();
 }
 

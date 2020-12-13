@@ -218,21 +218,20 @@ _________________________________________________________________
 
             <div class="col show-border" style="display:block">
               <h4>1. Forward and inverse mapping between articulation and acoustics</h4>
-              <br>
               <div class="row row-margin show-border">
                 <p>↓↓ Please choose <b>Speaker</b>, <b>Rate</b> and <b>Vowel</b> from the dropdown menus to see the result.</p>
                 <b>Speaker:</b> 
-                <select name="speaker" id="sel-speaker" onchange="showImage()">
+                <select name="speaker" id="sel-speaker-ar2ac" onchange="showImageAR2AC()">
                   <option value="F01" select="selected"></option>
                 </select>
                 <br>
                 <b>Rate:</b>
-                <select name="rate" id="sel-rate" onchange="showImage()">
+                <select name="rate" id="sel-rate-ar2ac" onchange="showImageAR2AC()">
                   <option value="Normal" select="selected"></option>
                 </select>
                 <br>
                 <b>Vowel:</b>
-                <select name="vowel" id="sel-vowel" onchange="showImage()">
+                <select name="vowel" id="sel-vowel-ar2ac" onchange="showImageAR2AC()">
                   <option value="IY1" select="selected"></option>
                 </select>
               </div>
@@ -244,50 +243,78 @@ _________________________________________________________________
 
             <div class="col show-border" style="display:block">
               <h4>2. Forward and inverse mapping between acoustics and vowel categories</h4>
-              <br>
               <div class="row row-margin show-border">
                 <p>↓↓ Please choose <b>Speaker</b>, <b>Rate</b> and <b>Vowel</b> from the dropdown menus to see the result.</p>
                 <b>Speaker:</b> 
-                <select name="speaker" id="sel-speaker" onchange="showImage()">
+                <select name="speaker" id="sel-speaker-ac2vw" onchange="showImageAC2VW()">
                   <option value="F01" select="selected"></option>
                 </select>
                 <br>
                 <b>Rate:</b>
-                <select name="rate" id="sel-rate" onchange="showImage()">
+                <select name="rate" id="sel-rate-ac2vw" onchange="showImageAC2VW()">
                   <option value="Normal" select="selected"></option>
                 </select>
                 <br>
                 <b>Vowel:</b>
-                <select name="vowel" id="sel-vowel" onchange="showImage()">
+                <select name="vowel" id="sel-vowel-ac2vw" onchange="showImageAC2VW()">
                   <option value="IY1" select="selected"></option>
                 </select>
               </div>
               <div class="row row-margin show-border" style="text-align:center;">
-                <img id="vis-ar2ac" src="" style="width:80%">
+                <img id="vis-ac2vw" src="" style="width:80%">
               </div>
             </div>
-
 
           </div>
 
           <div class="row row-margin show-border">
             <h2>Summary & Conclusion</h2>
             <p class="text-inner-margin">
-              
+              Language is produced by movement. The articulatory movement in speech accompanies a substantial amount of variability, 
+              like any other skilled human behavior. The current project aimed to examine how such variability is structured 
+              and can be modeled using flow-based invertible neural networks. This work is still in progress and more experiments
+              will be followed to test the effect of different phonetic context, choice of articulatory/acoustic features and 
+              hyper-parameter settings for the INNs. 
+            </p>
+
+            <p>
+              <h6>Implications</h6>
+              <ul>
+                <li>Comparison of the use of "good" variability by different speakers, language backgrounds or dialects.</li>
+                <li>Developing a speech inversion system with the interpretable forward-inverse mapping.</li>
+                <li>Developing an articulatory speech synthesizer which can utilize redundancy in articulation.</li>
+              </ul>
             </p>
           </div>
 
           <div class="row row-margin show-border">
             <h2>References</h2>
             <p class="text-inner-margin">
-              <ul>
-                <li></li>
+              <ul class="text-ref">
+                <li>Bernstein, N. (1967). The co-ordination and regulation of movements. Pergamon Press.</li>
+                <li>Latash, M., Scholz, J., & Schöner, G. (2002). Motor control strategies revealed in the structure of motor variability. Exercise and Sport Sciences Reviews, 30(1), 26–31.</li>
+                <li>Riley, M. A., & Turvey, M. T. (2002). Variability and determinism in motor behaviour. Journal of Motor Behaviour, 34(2), 26.</li>
+                <li>Sternad, D. (2018). It’s not (only) the mean that matters: variability, noise and exploration in skill learning. Current Opinion in Behavioral Sciences, 20, 183–195.</li>
+                <li>Whalen, D. H., & Chen, W.-R. (2019). Variability and central tendencies in speech production. Frontiers in Communication, 4.</li>
+                <li>Schöner, G., Martin, V., Reimann, H., & Scholz, J. (2008). Motor equivalence and the uncontrolled manifold. 8th International Seminar on Speech Production, 23–28.</li>
+                <li>Scholz, J., & Schöner, G. (2014). Use of the Uncontrolled Manifold (UCM) approach to understand motor variability, motor equivalence, and self-motion. In Advances in Experimental Medicine and Biology (Vol. 826, pp. 91–100).</li>
+                <li>Sivaraman, G., Mitra, V., Tiede, M., Saltzman, E., Goldstein, L., & Espy-Wilson, C. (2015). Analysis of coarticulated speech using estimated articulatory trajectories. Proceedings of the Annual Conference of the International Speech Communication Association, Interspeech, 369–373.</li>
+                <li>Whalen, D. H., Chen, W.-R., Tiede, M. K., & Nam, H. (2018). Variability of articulator positions and formants across nine English vowels. Journal of Phonetics, 68, 1–14.</li>
+                <li>Ardizzone, L., Kruse, J., Wirkert, S., Rahner, D., Pellegrini, E. W., Klessen, R. S., Maier-Hein, L., Rother, C., & Köthe, U. (2019). Analyzing inverse problems with invertible neural networks. 7th International Conference on Learning Representations, ICLR 2019, 1–20.</li>
+                <li>Dinh, L., Krueger, D., & Bengio, Y. (2014). NICE: Non-linear Independent Components Estimation. ArXiv, 1–13.</li>
               </ul>
             </p>
           </div>
 
           <div class="row row-margin show-border">
             <h2>Code examples</h2>
+            <p class="text-inner-margin">
+              <ul>
+                <li>Flow-based models: <a target="_blank" href="https://github.com/jaekookang/flow_based_models">https://github.com/jaekookang/flow_based_models</a></li>
+                <li>Invertible neural networks: <a target="_blank" href="https://github.com/jaekookang/invertible_neural_networks">https://github.com/jaekookang/invertible_neural_networks</a></li>
+                <li>Ardizzone et al 2018: <a target="_blank" href="https://github.com/VLL-HD/analyzing_inverse_problems">https://github.com/VLL-HD/analyzing_inverse_problems</a></li>
+              </ul>
+            </p>
           </div>
 
         </div>
@@ -295,9 +322,8 @@ _________________________________________________________________
         <!-- Bottom panel: Contents -->
         <div class="container page-width show-border">
           <footer>
+            <br>
             <p>Jaekoo Kang
-              <br>
-              <!-- linkedin; GitHub; ResearchGate; Twitter -->
               <br>
               <a href="mailto:jkang@gradcenter.cuny.edu">jkang@gradcenter.cuny.edu</a>
             </p>
