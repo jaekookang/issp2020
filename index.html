@@ -91,11 +91,15 @@
               Principal Component dimensions from the same speaker as an example.
               <br><br>
               <div style="display:block;text-align:center">
+                <h5>Articulatory and acoustic data for the four front vowels /i, ɪ, ɛ, æ/ of speaker F01</h5>
                 <img src="https://raw.githubusercontent.com/jaekookang/issp2020/master/img/F01_N_ctr.png" style="width:50%">
+                <br><br>
+                <h5>Synthesis along the first three Principal Components in articulatory data from speaker F01</h5>
                 <img src="https://raw.githubusercontent.com/jaekookang/issp2020/master/img/F01_pca_gradient.png" style="width:80%">
               </div>
             </p>
           </div>
+          <br>
 
           <div class="row row-margin show-border">
             <h2>Methods</h2>
@@ -196,7 +200,12 @@ _________________________________________________________________
             <br><br>
             
             <div style="display:block;text-align:center">
+              <h5>The Root Mean-Squared Error by speaker (total 8) and speaking rate (N vs. F)</h5>
+              <br>
               <img src="https://raw.githubusercontent.com/jaekookang/issp2020/master/img/RMSE.png" style="width:80%">
+              <br><br>
+              <h5>The Sum-of-Squared regression by speaker (total 8) and speaking rate (N vs. F) </h5>
+              <br>
               <img src="https://raw.githubusercontent.com/jaekookang/issp2020/master/img/SSreg.png" style="width:80%">
             </div>
             <br><br>
@@ -205,9 +214,39 @@ _________________________________________________________________
               The result of forward and inverse mapping with latent-space sampling is visualized in the following plots.
               You can select different <b>Speaker</b>, <b>Rate</b> and <b>Vowel</b> in the dropdown menu. The plots will change accordingly.
             </p>
+            <br><br>
 
             <div class="col show-border" style="display:block">
+              <h4>1. Forward and inverse mapping between articulation and acoustics</h4>
+              <br>
               <div class="row row-margin show-border">
+                <p>↓↓ Please choose <b>Speaker</b>, <b>Rate</b> and <b>Vowel</b> from the dropdown menus to see the result.</p>
+                <b>Speaker:</b> 
+                <select name="speaker" id="sel-speaker" onchange="showImage()">
+                  <option value="F01" select="selected"></option>
+                </select>
+                <br>
+                <b>Rate:</b>
+                <select name="rate" id="sel-rate" onchange="showImage()">
+                  <option value="Normal" select="selected"></option>
+                </select>
+                <br>
+                <b>Vowel:</b>
+                <select name="vowel" id="sel-vowel" onchange="showImage()">
+                  <option value="IY1" select="selected"></option>
+                </select>
+              </div>
+              <div class="row row-margin show-border" style="text-align:center;">
+                <img id="vis-ar2ac" src="" style="width:80%">
+              </div>
+            </div>
+            <br>
+
+            <div class="col show-border" style="display:block">
+              <h4>2. Forward and inverse mapping between acoustics and vowel categories</h4>
+              <br>
+              <div class="row row-margin show-border">
+                <p>↓↓ Please choose <b>Speaker</b>, <b>Rate</b> and <b>Vowel</b> from the dropdown menus to see the result.</p>
                 <b>Speaker:</b> 
                 <select name="speaker" id="sel-speaker" onchange="showImage()">
                   <option value="F01" select="selected"></option>
@@ -228,6 +267,7 @@ _________________________________________________________________
               </div>
             </div>
 
+
           </div>
 
           <div class="row row-margin show-border">
@@ -235,6 +275,19 @@ _________________________________________________________________
             <p class="text-inner-margin">
               
             </p>
+          </div>
+
+          <div class="row row-margin show-border">
+            <h2>References</h2>
+            <p class="text-inner-margin">
+              <ul>
+                <li></li>
+              </ul>
+            </p>
+          </div>
+
+          <div class="row row-margin show-border">
+            <h2>Code examples</h2>
           </div>
 
         </div>

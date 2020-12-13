@@ -37,9 +37,8 @@ function showImage() {
     speakerID = speakerSel.value;
     rateID = rateSel.value;
     vowelID = vowelSel.value;
-    var imgFile = "https://raw.githubusercontent.com/jaekookang/issp2020/master/img/AR2AC/" + speakerID + "_AR2AC_" + rateList[rateID] + "_" + vowelID + ".png";
+    var imgFile = "https://raw.githubusercontent.com/jaekookang/issp2020/master/img/AR2AC/" + speakerID + "_" + rateList[rateID] + "_ar2ac_" + "_" + vowelID + ".png";
     imgObj.src = imgFile;
-    console.log(imgFile);
 }
 
 window.onload = function() {
